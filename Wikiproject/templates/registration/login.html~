@@ -1,0 +1,17 @@
+{% extends "base2.html" %}
+{% block title %}Login{% endblock %}
+{% block head %}<center>Login</center>{% endblock %}
+{% block content %}
+    {% if form.errors %}
+        <p><center>Your username and password didn't match. Please try again.</center></p>
+    {% endif %}
+    <center><form method="post" action="." class = "elegant-aero">{% csrf_token %}
+        <table border="0">
+            <tr><th><label for="id_username">Username:</label></th><td>{{ form.username }}</td></tr>
+            <tr><th><label for="id_password">Password:</label></th><td>{{ form.password }}</td></tr>
+        </table>
+        <input type="submit" value="Login" />
+        <input type="hidden" name="next" value="/home" />
+    </form></center>
+    <center><a href="/register">Register</a></center>
+{% endblock %}

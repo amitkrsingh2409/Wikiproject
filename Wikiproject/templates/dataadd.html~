@@ -1,0 +1,11 @@
+<h1>Wikipedia</h1>
+{% if wiki_list %}
+   <ul>
+   {% for ele in wiki_list %}
+      <li><b>{{ele.title}} </b><a href="/login/">Update</a>  <a href="/login/">Delete</a></li> 
+      {{ele.body}} </br> </br>
+   {% endfor %}
+   </ul>
+{% else %}
+   <p>No data is available</p>
+{% endif %}

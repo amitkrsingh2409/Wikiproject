@@ -1,0 +1,12 @@
+{% extends "base2.html" %}
+{% block title %}User Registration{% endblock %}
+{% block head %}<center>User Registration</center>{% endblock %}
+{% block content %}
+    <center><form method="post" action="." class = "elegant-aero">{% csrf_token %}
+        <table border="0">
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Register" />
+    </form></center>
+    <center><a href="/">Login</a></center>
+{% endblock %}

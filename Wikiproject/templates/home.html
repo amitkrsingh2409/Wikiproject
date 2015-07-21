@@ -1,0 +1,41 @@
+{% extends "base2.html" %}
+{% block title %}Welcome to Wikipedia{% endblock %}
+{% block head %}<center>Welcome to Wikipedia</center>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+<script>
+$(function() {
+  $("#search").autocomplete({
+    source: "/api/get_search/",
+    minLength: 1,
+  });
+});
+</script>
+
+{% endblock %}
+{% block content %}
+    <center><p>Welcome {{ user.username }} !!!    <a href="/logout/">Logout</a></p></center>
+    <center><a href="/home/add/">Add content to Wikipedia</a></center> </br> </br>
+    <center><form action="/showsearch/" method="post">
+    {% csrf_token %}
+    <div class="ui-widget">
+        <label for="search">Search: </label>
+        <input id="search" type="text" name="search">
+        <input type="submit" value="Search">
+    </div>
+    </form></center>
+    <center><h3>Contents</h3></center>
+{% if wiki_list %}
+   <ul>
+   {% for ele in wiki_list %}
+      <li><b>{{ele.title}} </b><a href="/update/{{ele.id}}">Update</a>  <a href="/delete/{{ele.id}}">Delete</a></li></br> 
+      {{ele.body}} </br> </br>
+      <u>{{ele.posted}}</u> </br> </br>
+   {% endfor %}
+   </ul>
+{% else %}
+   <p>No data is available</p>
+{% endif %}
+    
+{% endblock %}

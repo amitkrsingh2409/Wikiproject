@@ -1,0 +1,6 @@
+<center><h2> Add/Update Content </h2></center>
+<center><div><form action="." method="post" class = "elegant-aero">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Add/Update" />
+</form></div></center>

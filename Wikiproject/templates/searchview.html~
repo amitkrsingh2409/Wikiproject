@@ -1,0 +1,16 @@
+{% extends "base2.html" %}
+{% block title %}Wikipedia{% endblock %}
+{% block head %}Wikipedia{% endblock %}
+{% block content %}
+{% if wiki_list %}
+   <ul>
+   {% for ele in wiki_list %}
+      <li><b>{{ele.title}} </b></li></br>
+      {{ele.body}} </br> </br>
+      {{ele.posted}} </br> </br>
+   {% endfor %}
+   </ul>
+{% else %}
+   <p>No data is available</p>
+{% endif %}
+{% endblock %}
